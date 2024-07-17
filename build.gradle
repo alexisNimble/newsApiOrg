@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'com.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.json:json:20210307'
+    testImplementation 'junit:junit:4.13.2'
+}
+
+application {
+    mainClass = 'com.newsapi.Main'
+}
+
+run {
+    standardInput = System.in
+    standardOutput = System.out
+    errorOutput = System.err
+}
+
+// Task to print the classpath
+task printClasspath {
+    doLast {
+        println "Classpath:"
+        configurations.runtimeClasspath.each { println it }
+    }
+}
